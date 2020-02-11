@@ -1,9 +1,14 @@
 package project;
 
 public class Mensajes {
-	private int mensajes_count = 0;
+	private int mensaje = 0;
 	
-	public Mensajes(String contador) {
-		mensajes_count = Integer.parseInt(contador);
+	public Mensajes() {
+		mensaje = (int)Math.random();
+	}
+	
+	public int getNumber()
+	{
+		return mensaje;
 	}
 }
