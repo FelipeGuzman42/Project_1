@@ -8,6 +8,10 @@ public class Principal {
 	static Cliente cli;
 	static Mensajes men;
 	static Servidor ser;
+	
+	static String mensajes;
+	static String clientes;
+	
 	public static void main(String[] args) {
 		lectorArchivo();
 	}
@@ -25,10 +29,10 @@ public class Principal {
 				a = st.split("=");
 				switch(a[0]) {
 				case "clientes":
-					cli = new Cliente(a[1]);
+					clientes = a[1];
 					break;
 				case "mensajes":
-					men = new Mensajes(a[1]);
+					mensajes = a[1];
 					break;
 				case "servidores":
 					ser = new Servidor(a[1]);
@@ -38,6 +42,9 @@ public class Principal {
 					break;
 				}
 			}
+			
+			cli = new Cliente(clientes,mensajes,buf);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
