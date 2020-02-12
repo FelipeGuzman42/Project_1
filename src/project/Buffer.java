@@ -25,11 +25,7 @@ public class Buffer {
 		buffer_count--;
 		if (buffer_count < 0) {
 			colaEspera.add(i);
-			try {
-				i.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			i.yield();
 		}
 	}
 	/* Leave buffer
@@ -71,17 +67,13 @@ public class Buffer {
 		buffer_count--;
 		if (buffer_count < 0) {
 			colaEspera.add(s);
-			try {
-				s.wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			s.yield();
 		}
 	}
 	/* Leave buffer
 	 * @param Servidor s
 	 * When servidor has finished its activity in buffer
-	 * it increases the capacity and if it can, retreives
+	 * it increases the capacity and if it can, retrieves
 	 * an object from colaEspera
 	 */
 	public synchronized void V(Servidor s) {
@@ -92,7 +84,7 @@ public class Buffer {
 		}
 	}
 	/* Gives the message to Servidor
-	 * Servidor retreives a message from the listaMensajes.
+	 * Servidor retrieves a message from the listaMensajes.
 	 * @returns the message to operate
 	 */
 	public synchronized Mensaje receiveMessage() {
