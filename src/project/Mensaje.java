@@ -1,14 +1,13 @@
 package project;
 
-public class Mensajes {
+public class Mensaje {
 	private int mensaje = 0;
 	
-	public Mensajes() {
+	public Mensaje() {
 		mensaje = (int)Math.random();
 	}
 	
-	public int getNumber()
-	{
+	public int getNumber(){
 		return mensaje;
 	}
 }

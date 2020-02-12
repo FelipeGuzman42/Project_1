@@ -6,11 +6,8 @@ import java.io.FileReader;
 public class Principal {
 	static Buffer buf;
 	static Cliente cli;
-	static Mensajes men;
+	static Mensaje men;
 	static Servidor ser;
-	
-	static String mensajes;
-	static String clientes;
 	
 	public static void main(String[] args) {
 		lectorArchivo();
@@ -19,7 +16,7 @@ public class Principal {
 	private static void lectorArchivo() {
 		FileReader fr = null;
 		BufferedReader br = null;
-		String st;
+		String st, mensajes = "", clientes = "";
 		String[] a = new String[2];
 		try {
 			fr = new FileReader("./data/examplefile.txt");
