@@ -16,7 +16,7 @@ public class Cliente extends Thread {
 	public void run() {
 		men = new Mensaje();
 		for (int i = 1; i <= mensaje_count; i++) {
-			br.P(this, men);
+			br.P(this);
 			sendMessage();
 		}
 
