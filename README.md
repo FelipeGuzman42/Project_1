@@ -2,6 +2,6 @@
 
 
 Autores:
-Mohammed Anis Bohra - 
-Felipe Guzm·n AvendaÒo - 201813791
-Nicol·s Munar Gonzalez - 
+Mohammed Anis Bohra - 202016142
+Felipe Guzm√°n Avenda√±o - 201813791
+Nicol√°s Munar Gonzalez - 
