@@ -10,4 +10,8 @@ public class Mensaje {
 	public int getNumber(){
 		return mensaje;
 	}
+	
+	public void setNumber(int num){
+            this.mensaje = num;
+        }
 }
