@@ -7,11 +7,35 @@ public class Principal {
 	static Buffer buf;
 	static Cliente cli;
 	static Mensaje men;
+        
+        //Is static necesarry for servers?
 	static Servidor ser;
+        
+        //Number of servers to be initialised in the for loop.
+        static String numSer;
 	
 	public static void main(String[] args) {
 		lectorArchivo();
+                startServers();
+                
 	}
+        
+        //All servers are initialised here with the input of the counter starting from 0, 
+        //and the static buffer
+        public static void startServers(){
+            if(Integer.parseInt(numSer) != 0)
+            {
+             for (int i = 0; i < Integer.parseInt(numSer); i++)
+                {
+                    ser = new Servidor(Integer.toString(i), buf);
+                    ser.start();  
+                }
+            }
+            else
+            {
+                System.out.println("No servers specified in file");
+            }
+        }
 	
 	private static void lectorArchivo() {
 		FileReader fr = null;
@@ -30,21 +54,24 @@ public class Principal {
 					break;
 				case "mensajes":
 					mensajes = a[1];
-					break;
+					break;                                    
 				case "servidores":
-					ser = new Servidor(a[1]);
+					ser = new Servidor(a[1], buf);
+                                        numSer = a[1];
 					break;
+                                        
+                                        //Is it correct to initialise server here?
 				case "tam_buffer":
 					buf = new Buffer(a[1]);
 					break;
 				}
 			}
 			
-			cli = new Cliente(clientes,mensajes,buf);
-			
+			//cli = new Cliente(clientes,mensajes,buf);
+                        
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}      
 	}
 	
 }
