@@ -23,7 +23,9 @@ public class Cliente extends Thread {
 	}
 
 	public void sendMessage() {
-
+		br.sendMessage(men);
+		br.V(this);
+		
 	}
 
 	public int getCliente() {
