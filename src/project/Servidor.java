@@ -18,7 +18,6 @@ public class Servidor extends Thread {
 		men = br.receiveMessage();
 		incrementer(men);
 		br.returnMessage(men);
-		br.V(this);
 	}
 
 	/**

@@ -5,40 +5,25 @@ import java.util.LinkedList;
 
 public class Buffer {
 	private int buffer_count = 0;
-	private LinkedList<Object> colaEspera;
+	private final int totalMessage;
 	private ArrayList<Mensaje> listaMensajes;
 
 	public Buffer(String contador) {
 		buffer_count = Integer.parseInt(contador);
-		colaEspera = new LinkedList<>();
+		totalMessage = buffer_count;
 		listaMensajes = new ArrayList<>();
 	}
-
+	
 	//Methods of the client
 	
 	/* Enter buffer
 	 * @param Cliente i
-	 * If the buffer doesn't have space for cliente to enter
-	 * it puts him in colaEspera and to wait until theres space
+	 * If the buffer doesn't have space for messages it puts
+	 * cliente in colaEspera and to wait until theres space
 	 */
-	public synchronized void P(Cliente i) {
-		buffer_count--;
-		if (buffer_count < 0) {
-			colaEspera.add(i);
+	public void P(Cliente i) {
+		while(buffer_count <= 0) {
 			i.yield();
-		}
-	}
-	/* Leave buffer
-	 * @param Cliente i
-	 * When cliente has finished its activity in buffer
-	 * it increases the capacity and if it can, retreives
-	 * an object from colaEspera
-	 */
-	public synchronized void V(Cliente i) {
-		buffer_count++;
-		if (buffer_count >= 0) {
-			Object o = colaEspera.getFirst();
-			o.notify();
 		}
 	}
 	/* Send message
@@ -49,11 +34,21 @@ public class Buffer {
 	 */
 	public synchronized void sendMessage(Mensaje m) {
 		listaMensajes.add(m);
+		buffer_count--;
 		try {
 			m.wait();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+	/* Leave buffer
+	 * @param Cliente i
+	 * When cliente has finished its activity in buffer
+	 * it increases the capacity and if it can, retreives
+	 * an object from colaEspera
+	 */
+	public synchronized void V(Cliente i) {
+		buffer_count++;
 	}
 	
 	//Methods for servidor
@@ -63,24 +58,10 @@ public class Buffer {
 	 * If the buffer doesn't have space for Servidor to enter
 	 * it puts him in colaEspera and to wait until theres space
 	 */
-	public synchronized void P(Servidor s) {
+	public void P(Servidor s) {
 		buffer_count--;
-		if (buffer_count < 0) {
-			colaEspera.add(s);
+		while(buffer_count == totalMessage) {
 			s.yield();
-		}
-	}
-	/* Leave buffer
-	 * @param Servidor s
-	 * When servidor has finished its activity in buffer
-	 * it increases the capacity and if it can, retrieves
-	 * an object from colaEspera
-	 */
-	public synchronized void V(Servidor s) {
-		buffer_count++;
-		if (buffer_count >= 0) {
-			Object o = colaEspera.getFirst();
-			o.notify();
 		}
 	}
 	/* Gives the message to Servidor
