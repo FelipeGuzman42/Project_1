@@ -24,11 +24,15 @@ public class Principal {
 	// 0,
 	// and the static buffer
 	public static void startServers() {
-		if (Integer.parseInt(numSer) != 0) {
-			for (int i = 0; i < Integer.parseInt(numSer); i++) {
-				ser = new Servidor(Integer.toString(i), buf);
-				ser.start();
-			}
+		if(Integer.parseInt(numSer) != 0)
+            	{
+             		for (int i = 0; i < Integer.parseInt(numSer); i++)
+                	{
+                    		Thread t = new Servidor(Integer.toString(i), buf);
+				t.start();
+                	}
+            	}
+			
 		} else {
 			System.out.println("No servers specified in file");
 		}
