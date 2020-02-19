@@ -59,7 +59,7 @@ public class Principal {
 					numSer = a[1];
 					break;
 
-				// Is it correct to initialise server here?
+					// Is it correct to initialise server here?
 				case "tam_buffer":
 					buf = new Buffer(a[1]);
 					break;

@@ -13,9 +13,9 @@ public class Buffer {
 		totalMessage = buffer_count;
 		listaMensajes = new ArrayList<>();
 	}
-	
+
 	//Methods of the client
-	
+
 	/* Enter buffer
 	 * @param Cliente i
 	 * If the buffer doesn't have space for messages it puts
@@ -26,7 +26,7 @@ public class Buffer {
 			i.yield();
 		}
 	}
-	/* Send message
+	/* S end message
 	 * @param Mensaje m
 	 * Cliente sends a message to be operated by servidor,
 	 * buffer adds the message to listaMensajes and puts
@@ -50,9 +50,9 @@ public class Buffer {
 	public synchronized void V(Cliente i) {
 		buffer_count++;
 	}
-	
+
 	//Methods for servidor
-	
+
 	/* Enter buffer
 	 * @param Servidor s
 	 * If the buffer doesn't have space for Servidor to enter

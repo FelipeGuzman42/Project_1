@@ -5,9 +5,9 @@ public class Servidor extends Thread {
 	private Mensaje men;
 	private static Buffer br;
 
-	public Servidor(String contador, Buffer br) {
+	public Servidor(String contador, Buffer pBr) {
 		servidor_count = Integer.parseInt(contador);
-		this.br = br;
+		br = pBr;
 
 	}
 
