@@ -4,22 +4,22 @@ public class Servidor extends Thread {
 	private int servidor_count = 0;
 	private Mensaje men;
 	private static Buffer br;
+	private static boolean end = false;
 
 	public Servidor(String contador, Buffer pBr) {
 		servidor_count = Integer.parseInt(contador);
 		br = pBr;
-
 	}
 
 	public void run() {
-		System.out.println("Server number" + servidor_count + "Started");
-		br.P(this);
-		System.out.println("Resource requested");
-		men = br.receiveMessage();
-		incrementer(men);
-		br.returnMessage(men);
+		System.out.println("Server number " + this.getId() + " Started");
+		while (!this.end) {
+			men = br.receiveMessage(this);
+			incrementer(men);
+			br.returnMessage(men);
+		}
 	}
-
+	
 	/**
 	 * Incrementer
 	 *
@@ -29,10 +29,12 @@ public class Servidor extends Thread {
 	 * increments and updates in the mensaje class to be returned.
 	 */
 	public void incrementer(Mensaje men) {
-
 		int temp;
 		temp = men.getNumber();
 		men.setNumber(temp++);
+	}
 
+	public static void setEnd() {
+		end = true;
 	}
 }

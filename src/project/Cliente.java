@@ -14,29 +14,27 @@ public class Cliente extends Thread {
 	}
 
 	public void run() {
-		
-		for (int i = 1; i <= mensaje_count; i++) {
+		while(mensaje_count != 0) {
 			men = new Mensaje();
 			br.P(this);
 			sendMessage();
+			messageAnswered();
 		}
-
+		br.endCliente();
 	}
 
 	public void sendMessage() {
+		System.out.println("Message: "+men.getNumber()+" sent!");
 		br.sendMessage(men);
+	}
+
+	//The message is answered
+	public void messageAnswered() {
 		br.V(this);
-		
+		System.out.println("Message: "+men.getNumber()+" answered!");
+		mensaje_count--;
 	}
-
-	public int getCliente() {
-		return cliente_count;
-	}
-
-	public void setCliente(int cli) {
-		cliente_count = cli;
-	}
-
+	
 	public int getMensajes() {
 		return mensaje_count;
 	}
