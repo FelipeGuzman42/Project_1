@@ -1,7 +1,6 @@
 package project;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Buffer {
 	private int buffer_count = 0;
