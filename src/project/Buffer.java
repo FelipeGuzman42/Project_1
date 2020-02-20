@@ -72,7 +72,7 @@ public class Buffer {
 	 * @returns the message to operate
 	 */
 	public Mensaje receiveMessage(Servidor s) {
-		synchronized (s) {
+		synchronized (this) {
 			if (numCliente == 0) {
 				s.setEnd();
 			}
