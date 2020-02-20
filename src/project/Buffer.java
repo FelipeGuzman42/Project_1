@@ -76,7 +76,7 @@ public class Buffer {
 			if (numCliente == 0) {
 				s.setEnd();
 			}
-			if(listaMensajes.isEmpty()) {
+			if(listaMensajes.isEmpty() && listaMensajes.size() == 0) {
 				Mensaje fin = new Mensaje();
 				fin.setNumber(-1);
 				return fin;

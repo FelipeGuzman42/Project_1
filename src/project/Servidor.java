@@ -18,6 +18,10 @@ public class Servidor extends Thread {
 			incrementer(men);
 			br.returnMessage(men);
 		}
+		servidor_count--;
+		if(servidor_count == 0) {
+			System.out.println("Program finished");
+		}
 	}
 	
 	/**
@@ -31,8 +35,7 @@ public class Servidor extends Thread {
 	public void incrementer(Mensaje men) {
 		int temp;
 		temp = men.getNumber();
-		temp++;
-		men.setNumber(temp);
+		men.setNumber(++temp);
 	}
 
 	public static void setEnd() {
