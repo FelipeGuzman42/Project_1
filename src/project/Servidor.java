@@ -31,7 +31,8 @@ public class Servidor extends Thread {
 	public void incrementer(Mensaje men) {
 		int temp;
 		temp = men.getNumber();
-		men.setNumber(temp++);
+		temp++;
+		men.setNumber(temp);
 	}
 
 	public static void setEnd() {
