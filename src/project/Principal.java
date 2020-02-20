@@ -36,7 +36,7 @@ public class Principal {
 				t.start();
 			}
 		} else {
-			System.out.println("No servers specified in file");
+			System.out.println("No clients specified in file");
 		}
 	}
 
