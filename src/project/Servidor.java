@@ -12,7 +12,7 @@ public class Servidor extends Thread {
 	}
 
 	public void run() {
-		System.out.println("Server number " + this.getId() + " Started");
+		System.out.println("Server number " + this.servidor_count + " Started");
 		while (!this.end) {
 			men = br.receiveMessage(this);
 			incrementer(men);
