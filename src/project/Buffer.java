@@ -28,6 +28,15 @@ public class Buffer {
 			i.yield();
 		}
 	}
+	
+	/* Leave buffer
+	 * 
+	 * @param Cliente i When cliente has finished its activity in buffer it
+	 * increases the capacity of messages
+	 */
+	public synchronized void V(Cliente i) {
+		buffer_count++;
+	}
 
 	/*
 	 * S end message
@@ -46,15 +55,6 @@ public class Buffer {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/* Leave buffer
-	 * 
-	 * @param Cliente i When cliente has finished its activity in buffer it
-	 * increases the capacity of messages
-	 */
-	public synchronized void V(Cliente i) {
-		buffer_count++;
 	}
 
 
