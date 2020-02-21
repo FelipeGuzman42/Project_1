@@ -81,7 +81,12 @@ public class Buffer {
 				fin.setNumber(-1);
 				return fin;
 			}
-			Mensaje m = listaMensajes.remove(0);
+			try {
+			Mensaje m = listaMensajes.remove(0);}
+			catch(Exception e)
+			{
+				
+			}
 			while (m == null) {
 				s.yield();
 				m = listaMensajes.remove(0);
